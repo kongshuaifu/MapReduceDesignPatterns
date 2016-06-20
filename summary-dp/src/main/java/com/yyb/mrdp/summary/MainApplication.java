@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class MainApplication {
 
-    private static final String MIN_MAX_COUNT = "MinMaxCount";
+    private static final String MIN_MAX_COUNT = "minmaxcount";
     private static final String AVERAGE = "average";
 
     public static void main(String[] args) throws Exception {
