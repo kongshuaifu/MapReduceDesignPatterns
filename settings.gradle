@@ -1,0 +1,4 @@
+rootProject.name = 'MapReduceDesignPatterns'
+include 'mapreduce-utils'
+include 'summary-dp'
+

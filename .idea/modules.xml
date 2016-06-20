@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns.iml" filepath="$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns_main.iml" filepath="$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns_main.iml" group="MapReduceDesignPatterns" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns_test.iml" filepath="$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns_test.iml" group="MapReduceDesignPatterns" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils.iml" filepath="$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils.iml" group="mapreduce-utils" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils_main.iml" filepath="$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils_main.iml" group="mapreduce-utils" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils_test.iml" filepath="$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils_test.iml" group="mapreduce-utils" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/summary-dp/summary-dp.iml" filepath="$PROJECT_DIR$/.idea/modules/summary-dp/summary-dp.iml" group="summary-dp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/summary-dp/summary-dp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/summary-dp/summary-dp_main.iml" group="summary-dp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/summary-dp/summary-dp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/summary-dp/summary-dp_test.iml" group="summary-dp" />
+    </modules>
+  </component>
+</project>
