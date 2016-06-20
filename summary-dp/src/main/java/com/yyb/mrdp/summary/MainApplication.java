@@ -1,6 +1,8 @@
 package com.yyb.mrdp.summary;
 
 import com.yyb.mrdp.summary.average.AverageTool;
+import com.yyb.mrdp.summary.medianstddev.v1.MedianStdDevV1Tool;
+import com.yyb.mrdp.summary.medianstddev.v2.MedianStdDevV2Tool;
 import com.yyb.mrdp.summary.minmaxcount.MinMaxCountTool;
 import com.yyb.mrdp.utils.MRDPUtils;
 import org.apache.hadoop.conf.Configuration;
@@ -17,6 +19,8 @@ public class MainApplication {
 
     private static final String MIN_MAX_COUNT = "minmaxcount";
     private static final String AVERAGE = "average";
+    private static final String MEDIAN_STD_DEV_V1 = "medianstddevv1";
+    private static final String MEDIAN_STD_DEV_V2 = "medianstddevv2";
 
     public static void main(String[] args) throws Exception {
         try {
@@ -28,6 +32,12 @@ public class MainApplication {
                     break;
                 case AVERAGE:
                     result = ToolRunner.run(conf, new AverageTool(), args);
+                    break;
+                case MEDIAN_STD_DEV_V1:
+                    result = ToolRunner.run(conf, new MedianStdDevV1Tool(), args);
+                    break;
+                case MEDIAN_STD_DEV_V2:
+                    result = ToolRunner.run(conf, new MedianStdDevV2Tool(), args);
                     break;
 
             }
@@ -45,6 +55,8 @@ public class MainApplication {
         List<String> classList = new ArrayList<>();
         classList.add(MIN_MAX_COUNT);
         classList.add(AVERAGE);
+        classList.add(MEDIAN_STD_DEV_V1);
+        classList.add(MEDIAN_STD_DEV_V2);
 
         return classList;
     }
