@@ -2,6 +2,7 @@
   <library name="Gradle: org.apache.hbase:hbase-client:1.2.1">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/Could not resolve org.apache.hbase:hbase-client:1.2.1." />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.hbase/hbase-client/1.2.1/d46340c59d980989a6ed03340335bd8574f32e33/hbase-client-1.2.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

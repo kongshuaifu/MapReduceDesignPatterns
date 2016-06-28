@@ -1,7 +1,10 @@
 package com.yyb.mrdp.bloomfilter;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.shell.find.Result;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.client.Get;
+import org.apache.hadoop.hbase.client.HTable;
+import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
