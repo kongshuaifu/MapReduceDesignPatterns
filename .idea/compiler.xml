@@ -19,6 +19,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="filtering-dp_main" target="1.8" />
+      <module name="filtering-dp_test" target="1.8" />
+      <module name="FilteringPatterns_main" target="1.8" />
+      <module name="FilteringPatterns_test" target="1.8" />
+      <module name="Java8Demo_main" target="1.8" />
+      <module name="Java8Demo_test" target="1.8" />
       <module name="mapreduce-utils_main" target="1.8" />
       <module name="mapreduce-utils_test" target="1.8" />
       <module name="MapReduceDesignPatterns_main" target="1.8" />

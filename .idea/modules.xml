@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns.iml" filepath="$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns_main.iml" filepath="$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns_main.iml" group="MapReduceDesignPatterns" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns_test.iml" filepath="$PROJECT_DIR$/.idea/modules/MapReduceDesignPatterns_test.iml" group="MapReduceDesignPatterns" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/filtering-dp/filtering-dp.iml" filepath="$PROJECT_DIR$/.idea/modules/filtering-dp/filtering-dp.iml" group="filtering-dp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/filtering-dp/filtering-dp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/filtering-dp/filtering-dp_main.iml" group="filtering-dp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/filtering-dp/filtering-dp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/filtering-dp/filtering-dp_test.iml" group="filtering-dp" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils.iml" filepath="$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils.iml" group="mapreduce-utils" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils_main.iml" filepath="$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils_main.iml" group="mapreduce-utils" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils_test.iml" filepath="$PROJECT_DIR$/.idea/modules/mapreduce-utils/mapreduce-utils_test.iml" group="mapreduce-utils" />

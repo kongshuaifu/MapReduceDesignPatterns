@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/filtering-dp" />
             <option value="$PROJECT_DIR$/mapreduce-utils" />
             <option value="$PROJECT_DIR$/summary-dp" />
           </set>
