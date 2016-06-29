@@ -12,5 +12,4 @@ repositories {
 dependencies {
     compile "org.apache.hadoop:hadoop-client:2.7.2"
     compile (project(":mapreduce-utils"))
-    testCompile group: 'junit', name: 'junit', version: '4.11'
 }

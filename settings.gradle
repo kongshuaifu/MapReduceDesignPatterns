@@ -1,4 +1,5 @@
 rootProject.name = 'MapReduceDesignPatterns'
 include 'mapreduce-utils'
 include 'summary-dp'
+include 'filtering-dp'
 
