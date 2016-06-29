@@ -23,8 +23,8 @@ public class BloomFilteringMapper extends Mapper<Object, Text, Text, NullWritabl
 
     private BloomFilter filter = new BloomFilter();
 
-    protected void setup(Context context) throws IOException,
-            InterruptedException {
+    protected void setup(Context context) throws IOException,InterruptedException {
+
         // Get file from the DistributedCache
         // URI[] files = DistributedCache.getCacheFiles(context.getConfiguration());
         URI[] files = context.getCacheFiles();
@@ -35,8 +35,7 @@ public class BloomFilteringMapper extends Mapper<Object, Text, Text, NullWritabl
         filter.readFields(strm);
         strm.close();
     }
-    public void map(Object key, Text value, Context context)
-            throws IOException, InterruptedException {
+    public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 
         Map<String, String> parsed = transformXmlToMap(value.toString());
 

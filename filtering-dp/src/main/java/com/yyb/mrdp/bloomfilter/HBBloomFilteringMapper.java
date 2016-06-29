@@ -8,7 +8,6 @@ import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.filecache.DistributedCache;
 import org.apache.hadoop.util.bloom.BloomFilter;
 import org.apache.hadoop.util.bloom.Key;
 
@@ -32,7 +31,8 @@ public class HBBloomFilteringMapper extends Mapper<Object, Text, Text, NullWrita
     protected void setup(Context context) throws IOException, InterruptedException {
 
         // Get file from the Distributed Cache
-        URI[] files = DistributedCache.getCacheFiles(context .getConfiguration());
+        // URI[] files = DistributedCache.getCacheFiles(context .getConfiguration());
+        URI[] files = context.getCacheFiles();
         System.out.println("Reading Bloom filter from: " + files[0].getPath());
 
         // Open local file for read.
