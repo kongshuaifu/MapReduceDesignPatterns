@@ -38,32 +38,29 @@ public class QuestionAnswerBuildingDriver {
         private Text outkey = new Text();
         private Text outvalue = new Text();
 
-        public void map(Object key, Text value, Context context)
-                throws IOException, InterruptedException {
-// Parse the post/comment XML hierarchy into an Element
+        public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+            // Parse the post/comment XML hierarchy into an Element
             try {
                 Element post = getXmlElementFromString(value.toString());
 
                 int postType = Integer.parseInt(post.getAttribute("PostTypeId"));
-// If postType is 1, it is a question
+                // If postType is 1, it is a question
                 if (postType == 1) {
                     outkey.set(post.getAttribute("Id"));
                     outvalue.set("Q" + value.toString());
                 } else {
-// Else, it is an answer
+                    // Else, it is an answer
                     outkey.set(post.getAttribute("ParentId"));
                     outvalue.set("A" + value.toString());
                 }
                 context.write(outkey, outvalue);
-            } catch (SAXException e) {
-                e.printStackTrace();
-            } catch (ParserConfigurationException e) {
+            } catch (SAXException | ParserConfigurationException e) {
                 e.printStackTrace();
             }
         }
 
         private Element getXmlElementFromString(String xml) throws IOException, SAXException, ParserConfigurationException {
-// same as previous example, “Mapper code” (page 80)
+            // same as previous example, “Mapper code” (page 80)
             DocumentBuilder bldr = dbf.newDocumentBuilder();
             return bldr.parse(new InputSource(new StringReader(xml)))
                     .getDocumentElement();
@@ -79,18 +76,18 @@ public class QuestionAnswerBuildingDriver {
 
         public void reduce(Text key, Iterable<Text> values, Context context)
                 throws IOException, InterruptedException {
-// Reset variables
+            // Reset variables
             question = null;
             answers.clear();
-// For each input value
+            // For each input value
             for (Text t : values) {
                 // If this is the post record, store it, minus the flag
                 if (t.charAt(0) == 'Q') {
                     question = t.toString().substring(1, t.toString().length())
                             .trim();
                 } else {
-// Else, it is a comment record. Add it to the list, minus
-// the flag
+                    // Else, it is a comment record. Add it to the list, minus
+                    // the flag
                     answers.add(t.toString()
                             .substring(1, t.toString().length()).trim());
                 }
@@ -98,48 +95,46 @@ public class QuestionAnswerBuildingDriver {
             try {
 
 
-// If post is not null
-            if (question != null) {
-// nest the comments underneath the post element
-                String postWithCommentChildren = nestElements(question, answers);
-// write out the XML
-                context.write(new Text(postWithCommentChildren),
-                        NullWritable.get());
-            }
-            }catch (Exception e){
+                // If post is not null
+                if (question != null) {
+                    // nest the comments underneath the post element
+                    String postWithCommentChildren = nestElements(question, answers);
+                    // write out the XML
+                    context.write(new Text(postWithCommentChildren),
+                            NullWritable.get());
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
         private String nestElements(String post, List<String> comments) throws Exception {
-// Create the new document to build the XML
+            // Create the new document to build the XML
             DocumentBuilder bldr = dbf.newDocumentBuilder();
             Document doc = bldr.newDocument();
-// Copy parent node to document
+            // Copy parent node to document
             Element postEl = getXmlElementFromString(post);
             Element toAddPostEl = doc.createElement("post");
-// Copy the attributes of the original post element to the new one
+            // Copy the attributes of the original post element to the new one
             copyAttributesToElement(postEl.getAttributes(), toAddPostEl);
-// For each comment, copy it to the "post" node
+            // For each comment, copy it to the "post" node
             for (String commentXml : comments) {
                 Element commentEl = getXmlElementFromString(commentXml);
                 Element toAddCommentEl = doc.createElement("comments");
-// Copy the attributes of the original comment element to
-// the new one
-                copyAttributesToElement(commentEl.getAttributes(),
-                        toAddCommentEl);
-// Add the copied comment to the post element
+                // Copy the attributes of the original comment element to
+                // the new one
+                copyAttributesToElement(commentEl.getAttributes(), toAddCommentEl);
+                // Add the copied comment to the post element
                 toAddPostEl.appendChild(toAddCommentEl);
             }
-// Add the post element to the document
+            // Add the post element to the document
             doc.appendChild(toAddPostEl);
-// Transform the document into a String of XML and return
+            // Transform the document into a String of XML and return
             return transformDocumentToString(doc);
         }
 
-        private void copyAttributesToElement(NamedNodeMap attributes,
-                                             Element element) {
-// For each attribute, copy it to the element
+        private void copyAttributesToElement(NamedNodeMap attributes, Element element) {
+            // For each attribute, copy it to the element
             for (int i = 0; i < attributes.getLength(); ++i) {
 
                 Attr toCopy = (Attr) attributes.item(i);
@@ -148,7 +143,7 @@ public class QuestionAnswerBuildingDriver {
         }
 
         private Element getXmlElementFromString(String xml) throws IOException, SAXException, ParserConfigurationException {
-// same as previous example, “Mapper code” (page 80)
+            // same as previous example, “Mapper code” (page 80)
             DocumentBuilder bldr = dbf.newDocumentBuilder();
             return bldr.parse(new InputSource(new StringReader(xml)))
                     .getDocumentElement();
@@ -157,13 +152,11 @@ public class QuestionAnswerBuildingDriver {
         private String transformDocumentToString(Document doc) throws Exception {
             TransformerFactory tf = TransformerFactory.newInstance();
             Transformer transformer = tf.newTransformer();
-            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION,
-                    "yes");
+            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             StringWriter writer = new StringWriter();
-            transformer.transform(new DOMSource(doc), new StreamResult(
-                    writer));
-// Replace all new line characters with an empty string to have
-// one record per line.
+            transformer.transform(new DOMSource(doc), new StreamResult(writer));
+            // Replace all new line characters with an empty string to have
+            // one record per line.
             return writer.getBuffer().toString().replaceAll("\n|\r", "");
         }
     }
