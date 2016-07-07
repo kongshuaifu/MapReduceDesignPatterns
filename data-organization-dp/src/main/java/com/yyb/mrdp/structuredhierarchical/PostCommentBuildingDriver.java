@@ -57,10 +57,8 @@ public class PostCommentBuildingDriver {
         private Text outkey = new Text();
         private Text outvalue = new Text();
 
-        public void map(Object key, Text value, Context context)
-                throws IOException, InterruptedException {
-            Map<String, String> parsed = MRDPUtils.transformXmlToMap(value
-                    .toString());
+        public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+            Map<String, String> parsed = MRDPUtils.transformXmlToMap(value.toString());
             // The foreign join key is the post ID
             outkey.set(parsed.get("Id"));
             // Flag this record for the reducer and then output
@@ -89,8 +87,7 @@ public class PostCommentBuildingDriver {
         private DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         private String post = null;
 
-        public void reduce(Text key, Iterable<Text> values, Context context)
-                throws IOException, InterruptedException {
+        public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 
             // Reset variables
             post = null;

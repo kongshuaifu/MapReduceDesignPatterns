@@ -31,10 +31,8 @@ import java.util.List;
  */
 public class QuestionAnswerBuildingDriver {
 
-    public static class PostCommentMapper extends
-            Mapper<Object, Text, Text, Text> {
-        private DocumentBuilderFactory dbf = DocumentBuilderFactory
-                .newInstance();
+    public static class PostCommentMapper extends Mapper<Object, Text, Text, Text> {
+        private DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         private Text outkey = new Text();
         private Text outvalue = new Text();
 
@@ -59,23 +57,20 @@ public class QuestionAnswerBuildingDriver {
             }
         }
 
-        private Element getXmlElementFromString(String xml) throws IOException, SAXException, ParserConfigurationException {
+        private Element getXmlElementFromString(String xml)
+                throws IOException, SAXException, ParserConfigurationException {
             // same as previous example, “Mapper code” (page 80)
             DocumentBuilder bldr = dbf.newDocumentBuilder();
-            return bldr.parse(new InputSource(new StringReader(xml)))
-                    .getDocumentElement();
+            return bldr.parse(new InputSource(new StringReader(xml))).getDocumentElement();
         }
     }
 
-    public static class QuestionAnswerReducer extends
-            Reducer<Text, Text, Text, NullWritable> {
+    public static class QuestionAnswerReducer extends Reducer<Text, Text, Text, NullWritable> {
         private ArrayList<String> answers = new ArrayList<String>();
-        private DocumentBuilderFactory dbf = DocumentBuilderFactory
-                .newInstance();
+        private DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         private String question = null;
 
-        public void reduce(Text key, Iterable<Text> values, Context context)
-                throws IOException, InterruptedException {
+        public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
             // Reset variables
             question = null;
             answers.clear();
@@ -83,13 +78,11 @@ public class QuestionAnswerBuildingDriver {
             for (Text t : values) {
                 // If this is the post record, store it, minus the flag
                 if (t.charAt(0) == 'Q') {
-                    question = t.toString().substring(1, t.toString().length())
-                            .trim();
+                    question = t.toString().substring(1, t.toString().length()).trim();
                 } else {
                     // Else, it is a comment record. Add it to the list, minus
                     // the flag
-                    answers.add(t.toString()
-                            .substring(1, t.toString().length()).trim());
+                    answers.add(t.toString().substring(1, t.toString().length()).trim());
                 }
             }
             try {
@@ -100,8 +93,7 @@ public class QuestionAnswerBuildingDriver {
                     // nest the comments underneath the post element
                     String postWithCommentChildren = nestElements(question, answers);
                     // write out the XML
-                    context.write(new Text(postWithCommentChildren),
-                            NullWritable.get());
+                    context.write(new Text(postWithCommentChildren), NullWritable.get());
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -142,11 +134,11 @@ public class QuestionAnswerBuildingDriver {
             }
         }
 
-        private Element getXmlElementFromString(String xml) throws IOException, SAXException, ParserConfigurationException {
+        private Element getXmlElementFromString(String xml)
+                throws IOException, SAXException, ParserConfigurationException {
             // same as previous example, “Mapper code” (page 80)
             DocumentBuilder bldr = dbf.newDocumentBuilder();
-            return bldr.parse(new InputSource(new StringReader(xml)))
-                    .getDocumentElement();
+            return bldr.parse(new InputSource(new StringReader(xml))).getDocumentElement();
         }
 
         private String transformDocumentToString(Document doc) throws Exception {

@@ -81,7 +81,8 @@ public class LastAccessDateBuildingDriver {
 
 
     public static class ValueReducer extends Reducer<IntWritable, Text, Text, NullWritable> {
-        protected void reduce(IntWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+        protected void reduce(IntWritable key, Iterable<Text> values, Context context)
+                throws IOException, InterruptedException {
             for (Text t : values) {
                 context.write(t, NullWritable.get());
             }
