@@ -4,4 +4,5 @@ include 'summary-dp'
 include 'filtering-dp'
 include 'data-organization-dp'
 include 'join-dp'
+include 'metapatterns-dp'
 
