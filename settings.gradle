@@ -5,4 +5,5 @@ include 'filtering-dp'
 include 'data-organization-dp'
 include 'join-dp'
 include 'metapatterns-dp'
+include 'input-output-dp'
 

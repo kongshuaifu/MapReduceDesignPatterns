@@ -1,5 +1,6 @@
 package com.yyb.mrdp.utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,4 +53,5 @@ public class MRDPUtils {
         System.out.println("");
     }
 
+    public static List<String> REDIS_INSTANCES = new ArrayList<>();
 }
